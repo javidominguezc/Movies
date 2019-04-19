@@ -24,6 +24,18 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         window?.rootViewController = vc
         window?.makeKeyAndVisible()
         
+        if let url = URL(string: "https://image.tmdb.org/t/p/w200/yi3hZ4mQq8JGyJSi3MBW5nMj1f.jpg") {
+            
+            NetworkManager.shared.downloadImage(from: url) { (data, response, error) in
+                
+                guard let data = data, error == nil else { return }
+                let fileName = response?.suggestedFilename ?? url.lastPathComponent
+                print("Download Finished: \(fileName)")
+                let image = UIImage(data: data)
+                print("Hello")
+            }
+        }
+        
         return true
     }
 
