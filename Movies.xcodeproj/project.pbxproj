@@ -19,6 +19,12 @@
 		4C1D494F2269F90A00374693 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 4C1D49532269F90A00374693 /* Localizable.strings */; };
 		4C1D49502269F90A00374693 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 4C1D49532269F90A00374693 /* Localizable.strings */; };
 		4C1D49512269F90A00374693 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 4C1D49532269F90A00374693 /* Localizable.strings */; };
+		4C1D4956226A0CA200374693 /* JGProgressHUD.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4C1D4954226A0CA200374693 /* JGProgressHUD.framework */; };
+		4C1D4957226A0CA200374693 /* JGProgressHUD.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4C1D4954226A0CA200374693 /* JGProgressHUD.framework */; };
+		4C1D4958226A0CA200374693 /* JGProgressHUD.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4C1D4954226A0CA200374693 /* JGProgressHUD.framework */; };
+		4C1D4959226A0CA200374693 /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4C1D4955226A0CA200374693 /* Alamofire.framework */; };
+		4C1D495A226A0CA200374693 /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4C1D4955226A0CA200374693 /* Alamofire.framework */; };
+		4C1D495B226A0CA200374693 /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4C1D4955226A0CA200374693 /* Alamofire.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -53,6 +59,8 @@
 		4C1D49262269E10800374693 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4C1D49472269F88A00374693 /* SimpleView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SimpleView.swift; sourceTree = "<group>"; };
 		4C1D49522269F90A00374693 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
+		4C1D4954226A0CA200374693 /* JGProgressHUD.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JGProgressHUD.framework; path = Carthage/Build/iOS/JGProgressHUD.framework; sourceTree = SOURCE_ROOT; };
+		4C1D4955226A0CA200374693 /* Alamofire.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Alamofire.framework; path = Carthage/Build/iOS/Alamofire.framework; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -60,6 +68,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4C1D4956226A0CA200374693 /* JGProgressHUD.framework in Frameworks */,
+				4C1D4959226A0CA200374693 /* Alamofire.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -67,6 +77,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4C1D4957226A0CA200374693 /* JGProgressHUD.framework in Frameworks */,
+				4C1D495A226A0CA200374693 /* Alamofire.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -74,6 +86,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4C1D4958226A0CA200374693 /* JGProgressHUD.framework in Frameworks */,
+				4C1D495B226A0CA200374693 /* Alamofire.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -84,9 +98,9 @@
 			isa = PBXGroup;
 			children = (
 				4C1D49002269E10600374693 /* Sources */,
-				4C1D49352269F67B00374693 /* Frameworks */,
 				4C1D49182269E10800374693 /* MoviesTests */,
 				4C1D49232269E10800374693 /* MoviesUITests */,
+				4C1D49352269F67B00374693 /* Frameworks */,
 				4C1D48FF2269E10600374693 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -156,6 +170,8 @@
 		4C1D49352269F67B00374693 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				4C1D4955226A0CA200374693 /* Alamofire.framework */,
+				4C1D4954226A0CA200374693 /* JGProgressHUD.framework */,
 			);
 			path = Frameworks;
 			sourceTree = "<group>";
@@ -302,6 +318,7 @@
 				4C1D48FA2269E10600374693 /* Sources */,
 				4C1D48FB2269E10600374693 /* Frameworks */,
 				4C1D48FC2269E10600374693 /* Resources */,
+				4C1D495C226A0CC600374693 /* Carthage */,
 			);
 			buildRules = (
 			);
@@ -419,6 +436,29 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		4C1D495C226A0CC600374693 /* Carthage */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"$(SRCROOT)/Carthage/Build/iOS/Alamofire.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/JGProgressHUD.framework",
+			);
+			name = Carthage;
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "/usr/local/bin/carthage copy-frameworks\n";
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		4C1D48FA2269E10600374693 /* Sources */ = {
@@ -606,6 +646,10 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Manual;
 				DEVELOPMENT_TEAM = "";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
 				INFOPLIST_FILE = "$(SRCROOT)/Sources/Infrastructure/Supporting Files/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -626,6 +670,10 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Manual;
 				DEVELOPMENT_TEAM = "";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
 				INFOPLIST_FILE = "$(SRCROOT)/Sources/Infrastructure/Supporting Files/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -647,6 +695,10 @@
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 524WR9D896;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
 				INFOPLIST_FILE = MoviesTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -668,6 +720,10 @@
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 524WR9D896;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
 				INFOPLIST_FILE = MoviesTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -688,6 +744,10 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 524WR9D896;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
 				INFOPLIST_FILE = MoviesUITests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -708,6 +768,10 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 524WR9D896;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
 				INFOPLIST_FILE = MoviesUITests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
