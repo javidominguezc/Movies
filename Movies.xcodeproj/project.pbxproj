@@ -8,13 +8,17 @@
 
 /* Begin PBXBuildFile section */
 		4C1D49022269E10600374693 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C1D49012269E10600374693 /* AppDelegate.swift */; };
-		4C1D49042269E10600374693 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C1D49032269E10600374693 /* ViewController.swift */; };
-		4C1D49072269E10600374693 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4C1D49052269E10600374693 /* Main.storyboard */; };
 		4C1D490A2269E10600374693 /* Movies.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 4C1D49082269E10600374693 /* Movies.xcdatamodeld */; };
 		4C1D490C2269E10800374693 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4C1D490B2269E10800374693 /* Assets.xcassets */; };
 		4C1D490F2269E10800374693 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4C1D490D2269E10800374693 /* LaunchScreen.storyboard */; };
 		4C1D491A2269E10800374693 /* MoviesTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C1D49192269E10800374693 /* MoviesTests.swift */; };
 		4C1D49252269E10800374693 /* MoviesUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C1D49242269E10800374693 /* MoviesUITests.swift */; };
+		4C1D49482269F88A00374693 /* SimpleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C1D49472269F88A00374693 /* SimpleView.swift */; };
+		4C1D49492269F88A00374693 /* SimpleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C1D49472269F88A00374693 /* SimpleView.swift */; };
+		4C1D494A2269F88A00374693 /* SimpleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C1D49472269F88A00374693 /* SimpleView.swift */; };
+		4C1D494F2269F90A00374693 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 4C1D49532269F90A00374693 /* Localizable.strings */; };
+		4C1D49502269F90A00374693 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 4C1D49532269F90A00374693 /* Localizable.strings */; };
+		4C1D49512269F90A00374693 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 4C1D49532269F90A00374693 /* Localizable.strings */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -37,8 +41,6 @@
 /* Begin PBXFileReference section */
 		4C1D48FE2269E10600374693 /* Movies.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Movies.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4C1D49012269E10600374693 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		4C1D49032269E10600374693 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		4C1D49062269E10600374693 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		4C1D49092269E10600374693 /* Movies.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Movies.xcdatamodel; sourceTree = "<group>"; };
 		4C1D490B2269E10800374693 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		4C1D490E2269E10800374693 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -49,6 +51,8 @@
 		4C1D49202269E10800374693 /* MoviesUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MoviesUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		4C1D49242269E10800374693 /* MoviesUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoviesUITests.swift; sourceTree = "<group>"; };
 		4C1D49262269E10800374693 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		4C1D49472269F88A00374693 /* SimpleView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SimpleView.swift; sourceTree = "<group>"; };
+		4C1D49522269F90A00374693 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -79,7 +83,8 @@
 		4C1D48F52269E10600374693 = {
 			isa = PBXGroup;
 			children = (
-				4C1D49002269E10600374693 /* Movies */,
+				4C1D49002269E10600374693 /* Sources */,
+				4C1D49352269F67B00374693 /* Frameworks */,
 				4C1D49182269E10800374693 /* MoviesTests */,
 				4C1D49232269E10800374693 /* MoviesUITests */,
 				4C1D48FF2269E10600374693 /* Products */,
@@ -96,18 +101,13 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
-		4C1D49002269E10600374693 /* Movies */ = {
+		4C1D49002269E10600374693 /* Sources */ = {
 			isa = PBXGroup;
 			children = (
-				4C1D49012269E10600374693 /* AppDelegate.swift */,
-				4C1D49032269E10600374693 /* ViewController.swift */,
-				4C1D49052269E10600374693 /* Main.storyboard */,
-				4C1D490B2269E10800374693 /* Assets.xcassets */,
-				4C1D490D2269E10800374693 /* LaunchScreen.storyboard */,
-				4C1D49102269E10800374693 /* Info.plist */,
-				4C1D49082269E10600374693 /* Movies.xcdatamodeld */,
+				4C1D49332269F65200374693 /* Infrastructure */,
+				4C1D49342269F66400374693 /* Interface */,
 			);
-			path = Movies;
+			path = Sources;
 			sourceTree = "<group>";
 		};
 		4C1D49182269E10800374693 /* MoviesTests */ = {
@@ -126,6 +126,170 @@
 				4C1D49262269E10800374693 /* Info.plist */,
 			);
 			path = MoviesUITests;
+			sourceTree = "<group>";
+		};
+		4C1D49332269F65200374693 /* Infrastructure */ = {
+			isa = PBXGroup;
+			children = (
+				4C1D49012269E10600374693 /* AppDelegate.swift */,
+				4C1D49362269F6B000374693 /* API Config */,
+				4C1D49372269F6CE00374693 /* Config */,
+				4C1D49382269F6D600374693 /* DataBase */,
+				4C1D49392269F6E000374693 /* Helpers */,
+				4C1D493A2269F6E900374693 /* Libraries */,
+				4C1D493B2269F6F100374693 /* Managers */,
+				4C1D493C2269F6F700374693 /* Models */,
+				4C1D493D2269F70200374693 /* Supporting Files */,
+			);
+			path = Infrastructure;
+			sourceTree = "<group>";
+		};
+		4C1D49342269F66400374693 /* Interface */ = {
+			isa = PBXGroup;
+			children = (
+				4C1D49452269F83300374693 /* Common Controls */,
+				4C1D49462269F84B00374693 /* Initial Screen */,
+			);
+			path = Interface;
+			sourceTree = "<group>";
+		};
+		4C1D49352269F67B00374693 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Frameworks;
+			sourceTree = "<group>";
+		};
+		4C1D49362269F6B000374693 /* API Config */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "API Config";
+			sourceTree = "<group>";
+		};
+		4C1D49372269F6CE00374693 /* Config */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Config;
+			sourceTree = "<group>";
+		};
+		4C1D49382269F6D600374693 /* DataBase */ = {
+			isa = PBXGroup;
+			children = (
+				4C1D49082269E10600374693 /* Movies.xcdatamodeld */,
+			);
+			path = DataBase;
+			sourceTree = "<group>";
+		};
+		4C1D49392269F6E000374693 /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Helpers;
+			sourceTree = "<group>";
+		};
+		4C1D493A2269F6E900374693 /* Libraries */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Libraries;
+			sourceTree = "<group>";
+		};
+		4C1D493B2269F6F100374693 /* Managers */ = {
+			isa = PBXGroup;
+			children = (
+				4C1D493F2269F79D00374693 /* Data Provider */,
+				4C1D49402269F7AF00374693 /* Network */,
+				4C1D49412269F7C900374693 /* User Defaults */,
+			);
+			path = Managers;
+			sourceTree = "<group>";
+		};
+		4C1D493C2269F6F700374693 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				4C1D49422269F7EF00374693 /* Base Models */,
+				4C1D49442269F80200374693 /* View Models */,
+				4C1D49432269F7F800374693 /* Parser */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		4C1D493D2269F70200374693 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				4C1D493E2269F73400374693 /* Resources */,
+				4C1D49102269E10800374693 /* Info.plist */,
+				4C1D490D2269E10800374693 /* LaunchScreen.storyboard */,
+				4C1D49532269F90A00374693 /* Localizable.strings */,
+			);
+			path = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		4C1D493E2269F73400374693 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				4C1D490B2269E10800374693 /* Assets.xcassets */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		4C1D493F2269F79D00374693 /* Data Provider */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "Data Provider";
+			sourceTree = "<group>";
+		};
+		4C1D49402269F7AF00374693 /* Network */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Network;
+			sourceTree = "<group>";
+		};
+		4C1D49412269F7C900374693 /* User Defaults */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "User Defaults";
+			sourceTree = "<group>";
+		};
+		4C1D49422269F7EF00374693 /* Base Models */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "Base Models";
+			sourceTree = "<group>";
+		};
+		4C1D49432269F7F800374693 /* Parser */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Parser;
+			sourceTree = "<group>";
+		};
+		4C1D49442269F80200374693 /* View Models */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "View Models";
+			sourceTree = "<group>";
+		};
+		4C1D49452269F83300374693 /* Common Controls */ = {
+			isa = PBXGroup;
+			children = (
+				4C1D49472269F88A00374693 /* SimpleView.swift */,
+			);
+			path = "Common Controls";
+			sourceTree = "<group>";
+		};
+		4C1D49462269F84B00374693 /* Initial Screen */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "Initial Screen";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -233,8 +397,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				4C1D490F2269E10800374693 /* LaunchScreen.storyboard in Resources */,
+				4C1D494F2269F90A00374693 /* Localizable.strings in Resources */,
 				4C1D490C2269E10800374693 /* Assets.xcassets in Resources */,
-				4C1D49072269E10600374693 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -242,6 +406,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4C1D49502269F90A00374693 /* Localizable.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -249,6 +414,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4C1D49512269F90A00374693 /* Localizable.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -259,8 +425,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4C1D49042269E10600374693 /* ViewController.swift in Sources */,
 				4C1D490A2269E10600374693 /* Movies.xcdatamodeld in Sources */,
+				4C1D49482269F88A00374693 /* SimpleView.swift in Sources */,
 				4C1D49022269E10600374693 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -269,6 +435,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4C1D49492269F88A00374693 /* SimpleView.swift in Sources */,
 				4C1D491A2269E10800374693 /* MoviesTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -277,6 +444,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4C1D494A2269F88A00374693 /* SimpleView.swift in Sources */,
 				4C1D49252269E10800374693 /* MoviesUITests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -297,20 +465,20 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		4C1D49052269E10600374693 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				4C1D49062269E10600374693 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		4C1D490D2269E10800374693 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
 				4C1D490E2269E10800374693 /* Base */,
 			);
 			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+		4C1D49532269F90A00374693 /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				4C1D49522269F90A00374693 /* en */,
+			);
+			name = Localizable.strings;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -438,7 +606,8 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Manual;
 				DEVELOPMENT_TEAM = "";
-				INFOPLIST_FILE = Movies/Info.plist;
+				INFOPLIST_FILE = "$(SRCROOT)/Sources/Infrastructure/Supporting Files/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -457,7 +626,8 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Manual;
 				DEVELOPMENT_TEAM = "";
-				INFOPLIST_FILE = Movies/Info.plist;
+				INFOPLIST_FILE = "$(SRCROOT)/Sources/Infrastructure/Supporting Files/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
