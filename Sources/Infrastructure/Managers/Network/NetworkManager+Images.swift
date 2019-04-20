@@ -7,27 +7,45 @@
 //
 
 import Foundation
-import UIKit
 
 extension NetworkManager {
     
-    internal func getMovieImage(withPath pathString: String, completionHandler: @escaping NetworkManagerDataHandler) {
+    // Different sizes from image
+    fileprivate struct ImageSizePath {
         
-        request(router: Router.getMovieImage(path: pathString), completionHandler: completionHandler)
+        static let small = "w200"
+        static let normal = "w500"
+        static let original = "original"
     }
     
-    func downloadImage(from url: URL, completionHandler: @escaping (Data?, URLResponse?, Error?) -> ()) {
+    enum ImageSize {
         
-        let fileName = url.lastPathComponent
-        print("Download Started: \(fileName)")
-        getData(from: url) { data, response, error in
+        case small
+        case normal
+        case original
+    }
+    
+    internal func getMovieImage(withPath pathString: String, imageSize: ImageSize, completionHandler: @escaping NetworkManagerCompletionHandler) {
+        
+        let imageSizePath = getImageSize(imageSize: imageSize)
+        let imagePath = "\(imageSizePath)\(pathString)"
+        
+        print("Download Started: \(imagePath)")
+        requestFile(router: Router.getMovieImage(path: imagePath), completionHandler: completionHandler)
+    }
+    
+    fileprivate func getImageSize(imageSize: ImageSize) -> String {
+        
+        switch imageSize {
+        case .small:
             
-            completionHandler(data, response, error)
+            return ImageSizePath.small
+        case .normal:
+            
+            return ImageSizePath.normal
+        case .original:
+            
+            return ImageSizePath.original
         }
-    }
-    
-    private func getData(from url: URL, completion: @escaping (Data?, URLResponse?, Error?) -> ()) {
-        
-        URLSession.shared.dataTask(with: url, completionHandler: completion).resume()
     }
 }

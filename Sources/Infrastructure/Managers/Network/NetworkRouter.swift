@@ -88,7 +88,7 @@ extension Router: URLRequestConvertible {
         case .getMovieVideos:
             
             return URLEncoding.default
-        default:
+        case .getMovieImage:
             
             return JSONEncoding.default
         }
@@ -148,6 +148,8 @@ extension Router: ContextProvider {
         
         var urlRequest = URLRequest(url: url.appendingPathComponent(result.path))
         urlRequest.httpMethod = asHttpMethod().rawValue
+        
+        // check if we have to add api key to the request params
         if stringUrl == Router.baseURLString {
 
             result.parameters = [Router.KApiKey: Router.apiKey]
