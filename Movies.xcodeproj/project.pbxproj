@@ -7,6 +7,19 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4C0C3B5D226A2497008A8679 /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4C0C3B5B226A2497008A8679 /* Alamofire.framework */; };
+		4C0C3B5E226A2497008A8679 /* JGProgressHUD.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4C0C3B5C226A2497008A8679 /* JGProgressHUD.framework */; };
+		4C0C3B60226A2818008A8679 /* NetworkRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C0C3B5F226A2818008A8679 /* NetworkRouter.swift */; };
+		4C0C3B62226A285D008A8679 /* NetworkManager+Movies.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C0C3B61226A285D008A8679 /* NetworkManager+Movies.swift */; };
+		4C0C3B67226A29FD008A8679 /* StringExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C0C3B66226A29FD008A8679 /* StringExtensions.swift */; };
+		4C0C3B69226A2A76008A8679 /* ColorExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C0C3B68226A2A76008A8679 /* ColorExtensions.swift */; };
+		4C0C3B6A226A2A79008A8679 /* StringExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C0C3B66226A29FD008A8679 /* StringExtensions.swift */; };
+		4C0C3B6B226A2A79008A8679 /* StringExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C0C3B66226A29FD008A8679 /* StringExtensions.swift */; };
+		4C0C3B6C226A2A7B008A8679 /* ColorExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C0C3B68226A2A76008A8679 /* ColorExtensions.swift */; };
+		4C0C3B6D226A2A7C008A8679 /* ColorExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C0C3B68226A2A76008A8679 /* ColorExtensions.swift */; };
+		4C0C3B6F226A3604008A8679 /* NetworkManager+Images.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C0C3B6E226A3604008A8679 /* NetworkManager+Images.swift */; };
+		4C0C3B70226A3604008A8679 /* NetworkManager+Images.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C0C3B6E226A3604008A8679 /* NetworkManager+Images.swift */; };
+		4C0C3B71226A3604008A8679 /* NetworkManager+Images.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C0C3B6E226A3604008A8679 /* NetworkManager+Images.swift */; };
 		4C1D49022269E10600374693 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C1D49012269E10600374693 /* AppDelegate.swift */; };
 		4C1D490A2269E10600374693 /* Movies.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 4C1D49082269E10600374693 /* Movies.xcdatamodeld */; };
 		4C1D490C2269E10800374693 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4C1D490B2269E10800374693 /* Assets.xcassets */; };
@@ -19,12 +32,15 @@
 		4C1D494F2269F90A00374693 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 4C1D49532269F90A00374693 /* Localizable.strings */; };
 		4C1D49502269F90A00374693 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 4C1D49532269F90A00374693 /* Localizable.strings */; };
 		4C1D49512269F90A00374693 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 4C1D49532269F90A00374693 /* Localizable.strings */; };
-		4C1D4956226A0CA200374693 /* JGProgressHUD.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4C1D4954226A0CA200374693 /* JGProgressHUD.framework */; };
-		4C1D4957226A0CA200374693 /* JGProgressHUD.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4C1D4954226A0CA200374693 /* JGProgressHUD.framework */; };
-		4C1D4958226A0CA200374693 /* JGProgressHUD.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4C1D4954226A0CA200374693 /* JGProgressHUD.framework */; };
-		4C1D4959226A0CA200374693 /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4C1D4955226A0CA200374693 /* Alamofire.framework */; };
-		4C1D495A226A0CA200374693 /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4C1D4955226A0CA200374693 /* Alamofire.framework */; };
-		4C1D495B226A0CA200374693 /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4C1D4955226A0CA200374693 /* Alamofire.framework */; };
+		4C1D495E226A15C400374693 /* AppAPIConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C1D495D226A15C400374693 /* AppAPIConfig.swift */; };
+		4C1D495F226A15C400374693 /* AppAPIConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C1D495D226A15C400374693 /* AppAPIConfig.swift */; };
+		4C1D4960226A15C400374693 /* AppAPIConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C1D495D226A15C400374693 /* AppAPIConfig.swift */; };
+		4C1D4962226A182300374693 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C1D4961226A182300374693 /* NetworkManager.swift */; };
+		4C1D4963226A182300374693 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C1D4961226A182300374693 /* NetworkManager.swift */; };
+		4C1D4964226A182300374693 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C1D4961226A182300374693 /* NetworkManager.swift */; };
+		4C1D4967226A18E900374693 /* CustomLog.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C1D4966226A18E900374693 /* CustomLog.swift */; };
+		4C1D4968226A18E900374693 /* CustomLog.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C1D4966226A18E900374693 /* CustomLog.swift */; };
+		4C1D4969226A18E900374693 /* CustomLog.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C1D4966226A18E900374693 /* CustomLog.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -45,6 +61,13 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		4C0C3B5B226A2497008A8679 /* Alamofire.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Alamofire.framework; path = Carthage/Build/iOS/Alamofire.framework; sourceTree = SOURCE_ROOT; };
+		4C0C3B5C226A2497008A8679 /* JGProgressHUD.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JGProgressHUD.framework; path = Carthage/Build/iOS/JGProgressHUD.framework; sourceTree = SOURCE_ROOT; };
+		4C0C3B5F226A2818008A8679 /* NetworkRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkRouter.swift; sourceTree = "<group>"; };
+		4C0C3B61226A285D008A8679 /* NetworkManager+Movies.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NetworkManager+Movies.swift"; sourceTree = "<group>"; };
+		4C0C3B66226A29FD008A8679 /* StringExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringExtensions.swift; sourceTree = "<group>"; };
+		4C0C3B68226A2A76008A8679 /* ColorExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorExtensions.swift; sourceTree = "<group>"; };
+		4C0C3B6E226A3604008A8679 /* NetworkManager+Images.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NetworkManager+Images.swift"; sourceTree = "<group>"; };
 		4C1D48FE2269E10600374693 /* Movies.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Movies.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4C1D49012269E10600374693 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		4C1D49092269E10600374693 /* Movies.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Movies.xcdatamodel; sourceTree = "<group>"; };
@@ -59,8 +82,9 @@
 		4C1D49262269E10800374693 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4C1D49472269F88A00374693 /* SimpleView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SimpleView.swift; sourceTree = "<group>"; };
 		4C1D49522269F90A00374693 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
-		4C1D4954226A0CA200374693 /* JGProgressHUD.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JGProgressHUD.framework; path = Carthage/Build/iOS/JGProgressHUD.framework; sourceTree = SOURCE_ROOT; };
-		4C1D4955226A0CA200374693 /* Alamofire.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Alamofire.framework; path = Carthage/Build/iOS/Alamofire.framework; sourceTree = SOURCE_ROOT; };
+		4C1D495D226A15C400374693 /* AppAPIConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppAPIConfig.swift; sourceTree = "<group>"; };
+		4C1D4961226A182300374693 /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
+		4C1D4966226A18E900374693 /* CustomLog.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomLog.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -68,8 +92,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4C1D4956226A0CA200374693 /* JGProgressHUD.framework in Frameworks */,
-				4C1D4959226A0CA200374693 /* Alamofire.framework in Frameworks */,
+				4C0C3B5E226A2497008A8679 /* JGProgressHUD.framework in Frameworks */,
+				4C0C3B5D226A2497008A8679 /* Alamofire.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -77,8 +101,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4C1D4957226A0CA200374693 /* JGProgressHUD.framework in Frameworks */,
-				4C1D495A226A0CA200374693 /* Alamofire.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -86,14 +108,21 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4C1D4958226A0CA200374693 /* JGProgressHUD.framework in Frameworks */,
-				4C1D495B226A0CA200374693 /* Alamofire.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		4C0C3B65226A29D5008A8679 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				4C0C3B66226A29FD008A8679 /* StringExtensions.swift */,
+				4C0C3B68226A2A76008A8679 /* ColorExtensions.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
 		4C1D48F52269E10600374693 = {
 			isa = PBXGroup;
 			children = (
@@ -150,6 +179,7 @@
 				4C1D49372269F6CE00374693 /* Config */,
 				4C1D49382269F6D600374693 /* DataBase */,
 				4C1D49392269F6E000374693 /* Helpers */,
+				4C0C3B65226A29D5008A8679 /* Extensions */,
 				4C1D493A2269F6E900374693 /* Libraries */,
 				4C1D493B2269F6F100374693 /* Managers */,
 				4C1D493C2269F6F700374693 /* Models */,
@@ -170,8 +200,8 @@
 		4C1D49352269F67B00374693 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				4C1D4955226A0CA200374693 /* Alamofire.framework */,
-				4C1D4954226A0CA200374693 /* JGProgressHUD.framework */,
+				4C0C3B5B226A2497008A8679 /* Alamofire.framework */,
+				4C0C3B5C226A2497008A8679 /* JGProgressHUD.framework */,
 			);
 			path = Frameworks;
 			sourceTree = "<group>";
@@ -179,6 +209,7 @@
 		4C1D49362269F6B000374693 /* API Config */ = {
 			isa = PBXGroup;
 			children = (
+				4C1D495D226A15C400374693 /* AppAPIConfig.swift */,
 			);
 			path = "API Config";
 			sourceTree = "<group>";
@@ -201,6 +232,7 @@
 		4C1D49392269F6E000374693 /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
+				4C1D4965226A18D300374693 /* Log */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -261,6 +293,10 @@
 		4C1D49402269F7AF00374693 /* Network */ = {
 			isa = PBXGroup;
 			children = (
+				4C1D4961226A182300374693 /* NetworkManager.swift */,
+				4C0C3B5F226A2818008A8679 /* NetworkRouter.swift */,
+				4C0C3B61226A285D008A8679 /* NetworkManager+Movies.swift */,
+				4C0C3B6E226A3604008A8679 /* NetworkManager+Images.swift */,
 			);
 			path = Network;
 			sourceTree = "<group>";
@@ -306,6 +342,14 @@
 			children = (
 			);
 			path = "Initial Screen";
+			sourceTree = "<group>";
+		};
+		4C1D4965226A18D300374693 /* Log */ = {
+			isa = PBXGroup;
+			children = (
+				4C1D4966226A18E900374693 /* CustomLog.swift */,
+			);
+			path = Log;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -465,9 +509,17 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4C0C3B69226A2A76008A8679 /* ColorExtensions.swift in Sources */,
 				4C1D490A2269E10600374693 /* Movies.xcdatamodeld in Sources */,
+				4C0C3B6F226A3604008A8679 /* NetworkManager+Images.swift in Sources */,
+				4C0C3B67226A29FD008A8679 /* StringExtensions.swift in Sources */,
 				4C1D49482269F88A00374693 /* SimpleView.swift in Sources */,
+				4C0C3B62226A285D008A8679 /* NetworkManager+Movies.swift in Sources */,
+				4C1D4962226A182300374693 /* NetworkManager.swift in Sources */,
+				4C1D495E226A15C400374693 /* AppAPIConfig.swift in Sources */,
 				4C1D49022269E10600374693 /* AppDelegate.swift in Sources */,
+				4C0C3B60226A2818008A8679 /* NetworkRouter.swift in Sources */,
+				4C1D4967226A18E900374693 /* CustomLog.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -475,8 +527,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4C0C3B6A226A2A79008A8679 /* StringExtensions.swift in Sources */,
+				4C1D4963226A182300374693 /* NetworkManager.swift in Sources */,
+				4C1D4968226A18E900374693 /* CustomLog.swift in Sources */,
 				4C1D49492269F88A00374693 /* SimpleView.swift in Sources */,
+				4C0C3B70226A3604008A8679 /* NetworkManager+Images.swift in Sources */,
+				4C1D495F226A15C400374693 /* AppAPIConfig.swift in Sources */,
 				4C1D491A2269E10800374693 /* MoviesTests.swift in Sources */,
+				4C0C3B6C226A2A7B008A8679 /* ColorExtensions.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -484,8 +542,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4C0C3B6B226A2A79008A8679 /* StringExtensions.swift in Sources */,
+				4C1D4964226A182300374693 /* NetworkManager.swift in Sources */,
+				4C1D4969226A18E900374693 /* CustomLog.swift in Sources */,
 				4C1D494A2269F88A00374693 /* SimpleView.swift in Sources */,
+				4C0C3B71226A3604008A8679 /* NetworkManager+Images.swift in Sources */,
+				4C1D4960226A15C400374693 /* AppAPIConfig.swift in Sources */,
 				4C1D49252269E10800374693 /* MoviesUITests.swift in Sources */,
+				4C0C3B6D226A2A7C008A8679 /* ColorExtensions.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
