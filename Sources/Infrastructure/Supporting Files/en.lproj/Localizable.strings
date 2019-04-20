@@ -15,3 +15,9 @@
 
 /* Loading content title */
 "Loading content" = "Loading";
+
+/* Catalog scene title */
+"Catalog - title" = "Movie Catalog";
+
+/* Movie detail scene title */
+"Movie detail - title" = "Movie Detail";

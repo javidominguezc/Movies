@@ -1,5 +1,5 @@
 //
-//  DetailParser.swift
+//  DetailMovieParser.swift
 //  Movies
 //
 //  Created by Javier Dominguez on 20/04/2019.
@@ -8,7 +8,7 @@
 
 import Foundation
 
-class DetailParser {
+class DetailMovieParser {
     
     func parser(_ responseObject: Any?) -> MovieDetailBaseModel? {
         

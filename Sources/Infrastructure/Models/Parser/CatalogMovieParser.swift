@@ -24,8 +24,9 @@ class CatalogMovieParser {
             let id = (result["id"] as? Int) ?? 0
             let title = result["original_title"] as? String
             let imagePath = result["backdrop_path"] as? String
+            let voteCount = (result["vote_count"] as? Int) ?? 0
             
-            let movieInfo = MovieBaseModel(id: id, title: title, imagePath: imagePath, image: nil)
+            let movieInfo = MovieBaseModel(id: id, title: title, imagePath: imagePath, voteCount: voteCount)
             moviesInfo.append(movieInfo)
         }
 

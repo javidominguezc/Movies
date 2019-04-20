@@ -32,7 +32,7 @@ class MovieCatalogPresenter: MovieCatalogPresentationLogic {
 // MARK: - Output - Display catalog
 extension MovieCatalogPresenter {
 
-    func prepareCatalogSuccess(responseObj: [MovieBaseModel]) {
+    func prepareCatalogSuccess(responseObj: [MovieResponseModel]) {
         
         var popularMovies = [MovieModel]()
         if !responseObj.isEmpty {
@@ -40,7 +40,7 @@ extension MovieCatalogPresenter {
             
             for item in responseObj {
                 
-                let popularMovie = MovieModel(id: item.id, title: item.title, image: item.image)
+                let popularMovie = MovieModel(id: item.movie.id, title: item.movie.title, image: item.image)
                 popularMovies.append(popularMovie)
             }
         }
