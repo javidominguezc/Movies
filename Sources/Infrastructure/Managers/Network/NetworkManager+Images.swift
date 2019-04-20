@@ -30,7 +30,7 @@ extension NetworkManager {
         let imageSizePath = getImageSize(imageSize: imageSize)
         let imagePath = "\(imageSizePath)\(pathString)"
         
-        print("Download Started: \(imagePath)")
+        DLog("Download Started: \(imagePath)")
         requestFile(router: Router.getMovieImage(path: imagePath), completionHandler: completionHandler)
     }
     

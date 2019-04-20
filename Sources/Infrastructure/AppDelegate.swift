@@ -21,7 +21,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         vc.view.backgroundColor = .red
         
         window = UIWindow(frame: UIScreen.main.bounds)
-        window?.rootViewController = vc
+        
+        let navigationController = UINavigationController(rootViewController: MovieCatalogViewController())
+        window?.rootViewController = navigationController
         window?.makeKeyAndVisible()
         
         return true

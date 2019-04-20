@@ -7,15 +7,21 @@
 //
 
 import UIKit
+import JGProgressHUD
 
 class SimpleView: UIView {
     
     var contentView: UILayoutGuide = UILayoutGuide()
+    let hud: JGProgressHUD
     
     override init(frame: CGRect) {
         
+        hud = JGProgressHUD(style: .dark)
+        
         // Init
         super.init(frame: frame)
+        
+        hud.textLabel.text = NSLocalizedString("Loading content", comment: "")
         
         setContenView()
     }
@@ -44,3 +50,16 @@ class SimpleView: UIView {
     }
 }
 
+// MARK: Extension - Spinner indicator controls
+extension SimpleView {
+    
+    func showLoadingIndicator() {
+    
+        hud.show(in: self, animated: true)
+    }
+    
+    func hideLoadingIndicator() {
+        
+        hud.dismiss(animated: true)
+    }
+}

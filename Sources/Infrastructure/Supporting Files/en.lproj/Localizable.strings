@@ -12,3 +12,6 @@
 
 /* General error title */
 "General error - title" = "Error";
+
+/* Loading content title */
+"Loading content" = "Loading";
