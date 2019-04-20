@@ -13,4 +13,5 @@ struct MovieBaseModel {
     let id: Int
     let title: String?
     let imagePath: String?
+    var image: Data?
 }

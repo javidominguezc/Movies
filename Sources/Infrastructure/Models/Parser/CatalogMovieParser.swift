@@ -25,7 +25,7 @@ class CatalogMovieParser {
             let title = result["original_title"] as? String
             let imagePath = result["backdrop_path"] as? String
             
-            let movieInfo = MovieBaseModel(id: id, title: title, imagePath: imagePath)
+            let movieInfo = MovieBaseModel(id: id, title: title, imagePath: imagePath, image: nil)
             moviesInfo.append(movieInfo)
         }
 
