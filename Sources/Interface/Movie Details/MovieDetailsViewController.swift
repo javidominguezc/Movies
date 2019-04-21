@@ -7,6 +7,8 @@
 //
 
 import UIKit
+import XCDYouTubeKit
+import AVKit
 
 protocol MovieDetailsDisplayLogic: class {
 
@@ -21,6 +23,8 @@ class MovieDetailsViewController: UIViewController {
 
     private let sceneView = MovieDetailsView()
     private var detailsData: MovieDetailModel?
+    
+    private weak var weakPlayerViewController: AVPlayerViewController? = nil
 
     // MARK: Object lifecycle
     override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
@@ -78,8 +82,9 @@ class MovieDetailsViewController: UIViewController {
         DLog("Watch trailer for \(movieTitle)")
         if let videoId = detailsData?.videoId {
             
-            let youtubeUrl = "https://www.youtube.com/watch?v=\(videoId)"
-            DLog("Video url: \(youtubeUrl)")
+            DLog("Play video: \(videoId)")
+            
+            playVideo(videoId)
         }
     }
 }
@@ -181,5 +186,55 @@ extension MovieDetailsViewController {
         }, completion: {
             _ in
         })
+    }
+}
+
+extension MovieDetailsViewController {
+    
+    func playVideo(_ videoId: String) {
+    
+        let playerViewController = AVPlayerViewController()
+        present(playerViewController, animated: true, completion: nil)
+        
+        weakPlayerViewController = playerViewController
+        XCDYouTubeClient.default().getVideoWithIdentifier(videoId) { [weak self] (video, error) in
+            
+            var playerSetupCorrectly = false
+            
+            if video != nil {
+                
+                if let streamURLs = video?.streamURLs {
+                    
+                    let streamURL = streamURLs[XCDYouTubeVideoQualityHTTPLiveStreaming] ?? streamURLs[XCDYouTubeVideoQuality.HD720.rawValue] ?? streamURLs[XCDYouTubeVideoQuality.medium360.rawValue] ??
+                        streamURLs[XCDYouTubeVideoQuality.small240.rawValue]
+                    
+                    if let url = streamURL {
+                        
+                        self?.weakPlayerViewController?.player = AVPlayer(url: url)
+                        self?.playerPlayMovie()
+                        playerSetupCorrectly = true
+                    }
+                }
+            }
+            
+            if !playerSetupCorrectly {
+                
+                 self?.dismiss(animated: true, completion: nil)
+            }
+        }
+    }
+    
+    private func playerPlayMovie() {
+        
+        // add notification to know when the player played to end time
+        NotificationCenter.default.addObserver(self, selector: #selector(playerDidFinish), name: NSNotification.Name.AVPlayerItemDidPlayToEndTime, object: weakPlayerViewController?.player?.currentItem)
+        
+        weakPlayerViewController?.player?.play()
+    }
+    
+    @objc private func playerDidFinish(notification: Notification) {
+        
+        // dismiss player
+        weakPlayerViewController?.dismiss(animated: true, completion: nil)
     }
 }

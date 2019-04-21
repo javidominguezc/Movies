@@ -1,4 +1,5 @@
 github "Alamofire/Alamofire" ~> 4.5.1
 github "JonasGessner/JGProgressHUD"
+github "0xced/XCDYouTubeKit" ~> 2.7
 
 
