@@ -116,6 +116,9 @@
 		4C0C3C03226BD552008A8679 /* MovieImageModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C0C3C02226BD552008A8679 /* MovieImageModel.swift */; };
 		4C0C3C04226BD552008A8679 /* MovieImageModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C0C3C02226BD552008A8679 /* MovieImageModel.swift */; };
 		4C0C3C05226BD552008A8679 /* MovieImageModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C0C3C02226BD552008A8679 /* MovieImageModel.swift */; };
+		4C0C3C07226CD35E008A8679 /* XCDYouTubeKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4C0C3C06226CD35E008A8679 /* XCDYouTubeKit.framework */; };
+		4C0C3C08226CD35E008A8679 /* XCDYouTubeKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4C0C3C06226CD35E008A8679 /* XCDYouTubeKit.framework */; };
+		4C0C3C09226CD35E008A8679 /* XCDYouTubeKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4C0C3C06226CD35E008A8679 /* XCDYouTubeKit.framework */; };
 		4C1D49022269E10600374693 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C1D49012269E10600374693 /* AppDelegate.swift */; };
 		4C1D490A2269E10600374693 /* Movies.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 4C1D49082269E10600374693 /* Movies.xcdatamodeld */; };
 		4C1D490C2269E10800374693 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4C1D490B2269E10800374693 /* Assets.xcassets */; };
@@ -196,6 +199,7 @@
 		4C0C3BF7226BC2B2008A8679 /* MovieResponseModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieResponseModel.swift; sourceTree = "<group>"; };
 		4C0C3BFC226BC666008A8679 /* MovieDetailResponseModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieDetailResponseModel.swift; sourceTree = "<group>"; };
 		4C0C3C02226BD552008A8679 /* MovieImageModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieImageModel.swift; sourceTree = "<group>"; };
+		4C0C3C06226CD35E008A8679 /* XCDYouTubeKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCDYouTubeKit.framework; path = Carthage/Build/iOS/XCDYouTubeKit.framework; sourceTree = SOURCE_ROOT; };
 		4C1D48FE2269E10600374693 /* Movies.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Movies.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4C1D49012269E10600374693 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		4C1D49092269E10600374693 /* Movies.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Movies.xcdatamodel; sourceTree = "<group>"; };
@@ -221,6 +225,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				4C0C3B5E226A2497008A8679 /* JGProgressHUD.framework in Frameworks */,
+				4C0C3C07226CD35E008A8679 /* XCDYouTubeKit.framework in Frameworks */,
 				4C0C3B5D226A2497008A8679 /* Alamofire.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -229,6 +234,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4C0C3C08226CD35E008A8679 /* XCDYouTubeKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -236,6 +242,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4C0C3C09226CD35E008A8679 /* XCDYouTubeKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -447,6 +454,7 @@
 		4C1D49352269F67B00374693 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				4C0C3C06226CD35E008A8679 /* XCDYouTubeKit.framework */,
 				4C0C3B5B226A2497008A8679 /* Alamofire.framework */,
 				4C0C3B5C226A2497008A8679 /* JGProgressHUD.framework */,
 			);
@@ -765,6 +773,7 @@
 			inputPaths = (
 				"$(SRCROOT)/Carthage/Build/iOS/Alamofire.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/JGProgressHUD.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/XCDYouTubeKit.framework",
 			);
 			name = Carthage;
 			outputFileListPaths = (
