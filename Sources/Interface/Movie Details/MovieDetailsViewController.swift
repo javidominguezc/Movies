@@ -158,3 +158,28 @@ extension MovieDetailsViewController {
         //        router?.routeToNextScene()
     }
 }
+
+// MARK: - Orientation
+extension MovieDetailsViewController {
+    
+    override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
+        
+        super.viewWillTransition(to: size, with: coordinator)
+        coordinator.animate(alongsideTransition: { context in
+            
+            let orientation = UIDevice.current.orientation
+            if orientation == .portrait {
+                
+                self.sceneView.setPortraitMode()
+            }
+            else {
+                
+                self.sceneView.setLandscapeMode()
+            }
+            self.sceneView.layoutIfNeeded()
+            
+        }, completion: {
+            _ in
+        })
+    }
+}

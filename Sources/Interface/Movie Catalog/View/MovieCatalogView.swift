@@ -67,12 +67,12 @@ class MovieCatalogView: SimpleView {
         NSLayoutConstraint.activate([
 
             // Horizontal
-            tableView.leadingAnchor.constraint(equalTo: leadingAnchor),
-            tableView.trailingAnchor.constraint(equalTo: trailingAnchor),
+            tableView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
+            tableView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
 
             // Vertical
-            tableView.topAnchor.constraint(equalTo: topAnchor),
-            tableView.bottomAnchor.constraint(equalTo: bottomAnchor)
+            tableView.topAnchor.constraint(equalTo: contentView.topAnchor),
+            tableView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor)
             ])
     }
 
