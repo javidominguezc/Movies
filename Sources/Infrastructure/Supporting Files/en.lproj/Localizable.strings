@@ -1,14 +1,23 @@
 /* No internet messagge */
 "No internet - message" = "Make sure your device is connected to the internet.";
 
+/* No internet messagge */
+"No internet for feature - message" = "This functionality requires internet connection";
+
 /* No internet title */
 "No internet - title" = "No Internet Connection";
 
 /* Friendly message error */
-"General - Friendly message" = "Oops, something went wrong. Please try again later.";
+"Error - Friendly message" = "Oops, something went wrong. Please try again later.";
 
 /* Alert controller action */
-"OK" = "OK";
+"Ok" = "OK";
+
+/* Dismiss - general */
+"Dismiss" = "Dismiss";
+
+/* Retry - general */
+"Retry" = "Try again";
 
 /* General error title */
 "General error - title" = "Error";

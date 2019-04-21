@@ -12,6 +12,7 @@ protocol MovieCatalogDisplayLogic: class {
 
     func displayCatalogSuccess(viewModel: MovieCatalog.Get.ViewModel)
     func displayCatalogFailure(viewModel: MovieCatalog.Get.ViewModel)
+    func displayCatalogNoInternet(viewModel: MovieCatalog.Get.ViewModel)
 }
 
 class MovieCatalogViewController: UIViewController {
@@ -176,24 +177,23 @@ extension MovieCatalogViewController: MovieCatalogDisplayLogic {
         sceneView.hideLoadingIndicator()
         
         //Show error alert
-        showError(description: viewModel.errorDescription)
+        showError(description: viewModel.errorDescription) { [weak self] in
+            
+            self?.tryGetCatalogMovies()
+        }
     }
     
-    private func showError(description: String?) {
+    func displayCatalogNoInternet(viewModel: MovieCatalog.Get.ViewModel) {
         
-        let errorDescription = description
+        //Hide spinner
+        sceneView.hideLoadingIndicator()
         
-        let alert = UIAlertController(title: NSLocalizedString("Oops", comment: String(describing: MovieCatalogViewController.self)),
-                                      message: errorDescription,
-                                      preferredStyle: .alert)
-        let okAction = UIAlertAction(title: NSLocalizedString("Ok", comment: String(describing: MovieCatalogViewController.self)),
-                                     style: .default,
-                                     handler: nil)
-        
-        alert.addAction(okAction)
-        present(alert, animated: true, completion: nil)
+        //Show error alert
+        showNoInternectConnectionAlert{ [weak self] in
+            
+            self?.tryGetCatalogMovies()
+        }
     }
-    
 }
 
 // MARK: Routing --- Navigate next scene

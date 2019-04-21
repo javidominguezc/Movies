@@ -20,6 +20,7 @@ enum MovieCatalog {
         enum Response {
             case success(moviesCatalog: [MovieResponseModel])
             case failure(error: Error)
+            case noInternet
         }
 
         struct ViewModel {
