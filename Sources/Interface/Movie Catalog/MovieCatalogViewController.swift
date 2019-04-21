@@ -21,7 +21,8 @@ class MovieCatalogViewController: UIViewController {
     
     private let movieCellIdentifier = "MovieCellIdentifier"
     private var tableViewDatasource = [MovieModel]()
-    private let sceneView = MovieCatalogView()
+    
+    let sceneView = MovieCatalogView()
 
     // MARK: Object lifecycle
     override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
@@ -60,7 +61,7 @@ class MovieCatalogViewController: UIViewController {
     override func viewDidLoad() {
 
         super.viewDidLoad()
-        title = "Movie Catalog"
+        title = NSLocalizedString("Catalog - title", comment: "Catalog title")
         
         sceneView.tableView.dataSource = self
         sceneView.tableView.delegate = self
@@ -133,12 +134,11 @@ extension MovieCatalogViewController: UITableViewDataSource, UITableViewDelegate
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
-        let id = tableViewDatasource[indexPath.row].id
-        prepareForMovieDetailScene(movieId: id)
+        prepareForMovieDetailScene()
     }
 }
 
-// MARK: - Output --- Do something
+// MARK: - Output --- Get Catalog
 extension MovieCatalogViewController {
 
     func tryGetCatalogMovies() {
@@ -151,7 +151,7 @@ extension MovieCatalogViewController {
     }
 }
 
-// MARK: - Input --- Display something
+// MARK: - Input --- Display Catalog
 extension MovieCatalogViewController: MovieCatalogDisplayLogic {
     
     func displayCatalogSuccess(viewModel: MovieCatalog.Get.ViewModel) {
@@ -199,9 +199,8 @@ extension MovieCatalogViewController: MovieCatalogDisplayLogic {
 // MARK: Routing --- Navigate next scene
 extension MovieCatalogViewController {
 
-    private func prepareForMovieDetailScene(movieId: Int) {
+    private func prepareForMovieDetailScene() {
 
-        print("Movie Details: \(movieId)")
-        //router?.routeToNextScene()
+        router?.routeToDetail()
     }
 }

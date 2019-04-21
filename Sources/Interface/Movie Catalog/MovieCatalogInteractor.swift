@@ -15,24 +15,29 @@ protocol MovieCatalogBusinessLogic {
 
 protocol MovieCatalogDataStore {
 
-    //var name: String { get set }
+    var movieCatalog: [MovieResponseModel] { get set }
 }
 
 class MovieCatalogInteractor: MovieCatalogBusinessLogic, MovieCatalogDataStore {
+    
+    private let dispatchGroup = DispatchGroup()
+    private var movieImages = [MovieImageModel]()
 
     var presenter: MovieCatalogPresentationLogic?
     var worker: MovieCatalogWorker?
     
-    var movieCatalog = [MovieBaseModel]()
-    private let dispatchGroup = DispatchGroup()
+    var movieCatalog = [MovieResponseModel]()
 
     // MARK: - Get Catalog
     func getCatalog(request: MovieCatalog.Get.Request) {
         
+        //reset values
+        movieImages = []
+        movieCatalog = []
+        
         worker = MovieCatalogWorker()
         worker?.getCatalog(completionHandler: { [weak self] (responseResult) in
             
-            var response: MovieCatalog.Get.Response
             switch responseResult {
             case .successDict(let dictResponse):
                 
@@ -44,28 +49,19 @@ class MovieCatalogInteractor: MovieCatalogBusinessLogic, MovieCatalogDataStore {
                     
                     // catalog is not nil
                     self?.getAllImages(catalog: catalog)
+                    self?.prepareToPresentCatalog(catalog: catalog)
                 } else {
                     
                     // catalog is nil
-                    let description = [NSLocalizedDescriptionKey: Custom.ErrorType.localizedString(forErrorCode: Custom.ErrorType.unexpectedResponseFormat)]
-                    let unexpectedError = NSError(domain: ErrorDomain.Generic,
-                                                  code: Custom.ErrorType.unexpectedResponseFormat.rawValue,
-                                                  userInfo: description)
-                    response = MovieCatalog.Get.Response.failure(error: unexpectedError)
-                    self?.presentCatalog(response: response)
+                    self?.presentErrorFormat()
                 }
                 
             case .error(let error):
                 
-                response = MovieCatalog.Get.Response.failure(error: error)
-                self?.presentCatalog(response: response)
+                self?.presentError(error)
             default:
                 
-                let unexpectedError = NSError(domain: ErrorDomain.Generic,
-                                              code: Custom.ErrorType.unexpectedResponseFormat.rawValue,
-                                              userInfo: [NSLocalizedDescriptionKey: Custom.ErrorType.localizedString(forErrorCode: Custom.ErrorType.unexpectedResponseFormat)])
-                response = MovieCatalog.Get.Response.failure(error: unexpectedError)
-                self?.presentCatalog(response: response)
+                self?.presentUnexpectedError()
             }
         })
     }
@@ -75,26 +71,6 @@ class MovieCatalogInteractor: MovieCatalogBusinessLogic, MovieCatalogDataStore {
         for movie in catalog {
             
             getImage(movie: movie)
-        }
-        
-        dispatchGroup.notify(queue: .main) { [weak self] in
-            
-            // all the images finished its download
-            
-            var response: MovieCatalog.Get.Response
-            
-            if let movieCatalog = self?.movieCatalog {
-                
-                response = MovieCatalog.Get.Response.success(moviesCatalog: movieCatalog)
-            } else {
-                
-                let unexpectedError = NSError(domain: ErrorDomain.Generic,
-                                              code: Custom.ErrorType.unexpectedResponseFormat.rawValue,
-                                              userInfo: [NSLocalizedDescriptionKey: Custom.ErrorType.localizedString(forErrorCode: Custom.ErrorType.unexpectedResponseFormat)])
-                response = MovieCatalog.Get.Response.failure(error: unexpectedError)
-            }
-            
-            self?.presentCatalog(response: response)
         }
     }
     
@@ -126,24 +102,97 @@ class MovieCatalogInteractor: MovieCatalogBusinessLogic, MovieCatalogDataStore {
                     break
                 }
                 
-                // save movie
-                
-                var movieC = movie
-                movieC.image = image
-                self?.movieCatalog.append(movieC)
+                // save image
+                let movieImage = MovieImageModel(id: movie.id, image: image)
+                self?.movieImages.append(movieImage)
                 
                 // leave dispatch
                 self?.dispatchGroup.leave()
             })
         }
     }
+    
+    private func prepareToPresentCatalog(catalog: [MovieBaseModel]) {
+        
+        dispatchGroup.notify(queue: .main) { [weak self] in
+            
+            // all the images finished its download
+            
+            // create movieCatalog
+            self?.createMovieCatalog(catalog: catalog)
+        
+            var response: MovieCatalog.Get.Response
+            
+            if let movieCatalog = self?.movieCatalog {
+                
+                response = MovieCatalog.Get.Response.success(moviesCatalog: movieCatalog)
+            } else {
+                
+                let unexpectedError = NSError(domain: ErrorDomain.Generic,
+                                              code: Custom.ErrorType.unexpectedResponseFormat.rawValue,
+                                              userInfo: [NSLocalizedDescriptionKey: Custom.ErrorType.localizedString(forErrorCode: Custom.ErrorType.unexpectedResponseFormat)])
+                response = MovieCatalog.Get.Response.failure(error: unexpectedError)
+            }
+            
+            self?.presentCatalog(response: response)
+        }
+    }
+    
+    private func createMovieCatalog(catalog: [MovieBaseModel]) {
+        
+        // order movies by votes
+        let orderCatalog = catalog.sorted(by: { $0.voteCount > $1.voteCount })
+        for item in orderCatalog {
+            
+            let movieImage = movieImages.first {$0.id == item.id }
+            
+            // add movies to movieCatalog
+            if let movieImage = movieImage {
+                
+                let movieResponseModel = MovieResponseModel(movie: item, image: movieImage.image)
+                movieCatalog.append(movieResponseModel)
+            }
+        }
+    }
 }
 
 // MARK: - Output - Present Catalog
 extension MovieCatalogInteractor {
-
+    
     func presentCatalog(response: MovieCatalog.Get.Response) {
         
         presenter?.presentCatalog(response: response)
+    }
+}
+
+// MARK: - Present Errors
+extension MovieCatalogInteractor {
+    
+    private func presentErrorFormat() {
+        
+        let response: MovieCatalog.Get.Response
+        let description = [NSLocalizedDescriptionKey: Custom.ErrorType.localizedString(forErrorCode: Custom.ErrorType.unexpectedResponseFormat)]
+        let unexpectedError = NSError(domain: ErrorDomain.Generic,
+                                      code: Custom.ErrorType.unexpectedResponseFormat.rawValue,
+                                      userInfo: description)
+        response = MovieCatalog.Get.Response.failure(error: unexpectedError)
+        presentCatalog(response: response)
+    }
+    
+    private func presentError(_ error: Error) {
+        
+        let response: MovieCatalog.Get.Response
+        response = MovieCatalog.Get.Response.failure(error: error)
+        presentCatalog(response: response)
+    }
+    
+    private func presentUnexpectedError() {
+        
+        let response: MovieCatalog.Get.Response
+        let unexpectedError = NSError(domain: ErrorDomain.Generic,
+                                      code: Custom.ErrorType.unexpectedResponseFormat.rawValue,
+                                      userInfo: [NSLocalizedDescriptionKey: Custom.ErrorType.localizedString(forErrorCode: Custom.ErrorType.unexpectedResponseFormat)])
+        response = MovieCatalog.Get.Response.failure(error: unexpectedError)
+        presentCatalog(response: response)
     }
 }

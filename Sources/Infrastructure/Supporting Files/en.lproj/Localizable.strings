@@ -15,3 +15,21 @@
 
 /* Loading content title */
 "Loading content" = "Loading";
+
+/* Catalog scene title */
+"Catalog - title" = "Movie Catalog";
+
+/* Movie detail scene title */
+"Movie detail - title" = "Movie Detail";
+
+/* Watch trailer button title - Details */
+"Watch trailer - title" = "Watch Trailer";
+
+/* Genres title - Details */
+"Genres title" = "Genres";
+
+/* Date title - Details */
+"Date title" = "Date";
+
+/* Overview title - Details */
+"Overview title" = "Overview";

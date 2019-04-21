@@ -1,5 +1,5 @@
 //
-//  MovieBaseModel.swift
+//  MovieResponseModel.swift
 //  Movies
 //
 //  Created by Javier Dominguez on 20/04/2019.
@@ -8,10 +8,8 @@
 
 import Foundation
 
-struct MovieBaseModel {
+struct MovieResponseModel {
     
-    let id: Int
-    let title: String?
-    let imagePath: String?
-    let voteCount: Int
+    let movie: MovieBaseModel
+    var image: Data?
 }

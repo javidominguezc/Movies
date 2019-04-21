@@ -10,6 +10,7 @@ import UIKit
 
 class MovieCatalogWorker {
 
+    // get the catalog of popular movies
     func getCatalog(completionHandler: @escaping NetworkManagerCompletionHandler) {
         
         NetworkManager.shared.getPopularMovies { (responseResult) in
@@ -18,6 +19,7 @@ class MovieCatalogWorker {
         }
     }
     
+    // get image of the movie - low quality
     func getImage(imagePath: String, completionHandler: @escaping NetworkManagerCompletionHandler) {
         
         NetworkManager.shared.getMovieImage(withPath: imagePath, imageSize: .small) { (responseResult) in

@@ -12,13 +12,7 @@ class MovieCatalogView: SimpleView {
     
     // MARK: Private
     private struct ViewTraits {
-
-        // Margins
-        static let topMargin: CGFloat = 15.0
-        static let bottomMargin: CGFloat = 50.0
-
-        //Heights
-        static let viewHeight: CGFloat = 150.0
+        
     }
 
     // MARK: Public
@@ -28,19 +22,38 @@ class MovieCatalogView: SimpleView {
         
         //tableView
         tableView = UITableView(frame: .zero, style: .plain)
-        tableView.backgroundColor = .clear
 
         // Init
         super.init(frame: frame)
-
+        
+        setupViews()
+        addSubviews()
+        addConstraints()
+    }
+    
+    private func setupViews() {
+        
         backgroundColor = .white
-
+        
+        setupTableView()
+    }
+    
+    private func setupTableView() {
+    
+        tableView.backgroundColor = .clear
+    }
+    
+    private func addSubviews() {
+        
         // Add subviews
         addSubview(tableView)
-
-        // Add constraints
+    }
+    
+    private func addConstraints() {
+        
         tableView.translatesAutoresizingMaskIntoConstraints = false
-
+        
+        // Add constraints
         addCustomConstraints()
     }
 
@@ -54,12 +67,12 @@ class MovieCatalogView: SimpleView {
         NSLayoutConstraint.activate([
 
             // Horizontal
-            tableView.leadingAnchor.constraint(equalTo: leadingAnchor),
-            tableView.trailingAnchor.constraint(equalTo: trailingAnchor),
+            tableView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
+            tableView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
 
             // Vertical
-            tableView.topAnchor.constraint(equalTo: topAnchor),
-            tableView.bottomAnchor.constraint(equalTo: bottomAnchor)
+            tableView.topAnchor.constraint(equalTo: contentView.topAnchor),
+            tableView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor)
             ])
     }
 

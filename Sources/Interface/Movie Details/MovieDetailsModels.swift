@@ -1,5 +1,5 @@
 //
-//  MovieCatalogModels.swift
+//  MovieDetailsModels.swift
 //  Movies
 //
 //  Created by Javier Dominguez on 20/04/2019.
@@ -8,25 +8,24 @@
 
 import UIKit
 
-enum MovieCatalog {
+enum MovieDetails {
 
     // MARK: Use cases
     enum Get {
-
+        
         struct Request {
             
         }
-
+        
         enum Response {
-            case success(moviesCatalog: [MovieResponseModel])
+            case success(details: MovieDetailResponseModel)
             case failure(error: Error)
         }
-
+        
         struct ViewModel {
             
-            let movies: [MovieModel]?
+            let movieDetails: MovieDetailModel?
             let errorDescription: String?
         }
     }
-    
 }

@@ -10,9 +10,9 @@ import Foundation
 
 struct MovieDetailModel {
     
-    let movieId: Int
+    let id: Int
     let title: String?
-    let imagePath: Data?
+    let image: Data?
     let genres: String?
     let releaseDate: String?
     let overview: String?
