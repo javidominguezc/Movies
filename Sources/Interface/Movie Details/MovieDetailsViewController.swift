@@ -20,6 +20,7 @@ class MovieDetailsViewController: UIViewController {
     var router: (MovieDetailsRoutingLogic & MovieDetailsDataPassing)?
 
     private let sceneView = MovieDetailsView()
+    private var detailsData: MovieDetailModel?
 
     // MARK: Object lifecycle
     override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
@@ -60,12 +61,30 @@ class MovieDetailsViewController: UIViewController {
         
         title = NSLocalizedString("Movie detail - title", comment: "Movie detail title")
         
+        // hide content
+        sceneView.hideContent()
+        
+        // add action to watch trailer button
+        sceneView.trailerView.addTarget(self, action: #selector(watchTrailerDidPress), for: .touchUpInside)
+        
         // try to get details of the movie
         tryGetMovieDetails()
     }
+    
+    @objc private func watchTrailerDidPress() {
+        
+        // show trailer from youtube
+        let movieTitle = detailsData?.title ?? ""
+        DLog("Watch trailer for \(movieTitle)")
+        if let videoId = detailsData?.videoId {
+            
+            let youtubeUrl = "https://www.youtube.com/watch?v=\(videoId)"
+            DLog("Video url: \(youtubeUrl)")
+        }
+    }
 }
 
-// MARK: Output --- Do something
+// MARK: Output --- Get details
 extension MovieDetailsViewController {
 
     func tryGetMovieDetails() {
@@ -86,10 +105,23 @@ extension MovieDetailsViewController: MovieDetailsDisplayLogic {
         //Hide spinner
         sceneView.hideLoadingIndicator()
         
-        if let _ = viewModel.movieDetails {
+        if let details = viewModel.movieDetails {
             
-            print("YEAH")
+            detailsData = details
+            
+            if let imageData = details.image {
+                
+                sceneView.imageView.image = UIImage(data: imageData)
+            }
+            
+            sceneView.titleLabel.text = details.title ?? ""
+            sceneView.genresLabel.text = details.genres ?? ""
+            sceneView.dateLabel.text = details.releaseDate ?? ""
+            sceneView.overviewLabel.text = details.overview ?? ""
         }
+        
+        //Show content
+        sceneView.showContent()
     }
     
     func displayDetailsFailure(viewModel: MovieDetails.Get.ViewModel) {

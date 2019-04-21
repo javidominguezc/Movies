@@ -294,8 +294,8 @@
 		4C0C3BB8226B3904008A8679 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				4C0C3BA1226B38BE008A8679 /* MovieCatalogView.swift */,
 				4C0C3BC4226B7595008A8679 /* MovieCatalogTableViewCell.swift */,
+				4C0C3BA1226B38BE008A8679 /* MovieCatalogView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
