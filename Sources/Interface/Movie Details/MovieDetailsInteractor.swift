@@ -37,41 +37,65 @@ class MovieDetailsInteractor: MovieDetailsBusinessLogic, MovieDetailsDataStore {
         if itemToShow != 0 {
             
             let id = String(itemToShow)
-            worker = MovieDetailsWorker()
-            worker?.getDetails(id: id, completionHandler: { [weak self] (responseResult) in
+            
+            // check internet connection
+            if !NetworkManager.shared.isReachable() {
                 
-                switch responseResult {
-                case .successDict(let dictResponse):
+                // No internet connection
+                // Get data from DB
+                let result = DetailsDataProvider.getDetailsFromDB(id: id)
+                if result == nil {
                     
-                    // parse the response
-                    let detailParser = DetailMovieParser()
-                    let details = detailParser.parser(dictResponse)
+                    // no data yet
+                    presentNoInternetConnection()
+                } else {
                     
-                    if let details = details {
-                        
-                        // details is not nil
-                        // save details
-                        self?.mDetails = details
-                        self?.getResources(details: details)
-                    } else {
-                        
-                        // details is nil
-                        self?.presentErrorFormat()
-                    }
-                    
-                case .error(let error):
-                    
-                    self?.presentError(error)
-                default:
-                    
-                    self?.presentUnexpectedError()
+                    // data available to show
                 }
-            })
+            } else {
+                
+                // Get data from API
+                getDetailsFromAPI(id: id)
+            }
         } else {
             
             // something was wrong
             presentUnexpectedError()
         }
+    }
+    
+    private func getDetailsFromAPI(id: String) {
+        
+        worker = MovieDetailsWorker()
+        worker?.getDetails(id: id, completionHandler: { [weak self] (responseResult) in
+            
+            switch responseResult {
+            case .successDict(let dictResponse):
+                
+                // parse the response
+                let detailParser = DetailMovieParser()
+                let details = detailParser.parser(dictResponse)
+                
+                if let details = details {
+                    
+                    // details is not nil
+                    // save details
+                    self?.mDetails = details
+                    self?.getResources(details: details)
+                } else {
+                    
+                    // details is nil
+                    self?.presentErrorFormat()
+                }
+                
+            case .error(let error):
+                
+                self?.presentError(error)
+            default:
+                
+                self?.presentUnexpectedError()
+            }
+        })
     }
         
     private func getResources(details: MovieDetailBaseModel) {
@@ -182,7 +206,7 @@ class MovieDetailsInteractor: MovieDetailsBusinessLogic, MovieDetailsDataStore {
 // MARK: - Output - Present Details
 extension MovieDetailsInteractor {
 
-    func presentDetails(response: MovieDetails.Get.Response) {
+    private func presentDetails(response: MovieDetails.Get.Response) {
         
         presenter?.presentDetails(response: response)
     }
@@ -190,6 +214,13 @@ extension MovieDetailsInteractor {
 
 // MARK: - Present Errors
 extension MovieDetailsInteractor {
+    
+    private func presentNoInternetConnection() {
+        
+        let response: MovieDetails.Get.Response
+        response = MovieDetails.Get.Response.noInternet
+        presentDetails(response: response)
+    }
     
     private func presentErrorFormat() {
         

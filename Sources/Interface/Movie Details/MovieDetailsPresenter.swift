@@ -25,6 +25,8 @@ class MovieDetailsPresenter: MovieDetailsPresentationLogic {
             prepareDetailsSuccess(responseObj: response)
         case .failure(let error):
             prepareDetailsFailure(error: error)
+        case .noInternet:
+            prepareDetailsNoInternet()
         }
     }
 }
@@ -32,7 +34,7 @@ class MovieDetailsPresenter: MovieDetailsPresentationLogic {
 // MARK: - Output - Display details
 extension MovieDetailsPresenter {
     
-    func prepareDetailsSuccess(responseObj: MovieDetailResponseModel) {
+    private func prepareDetailsSuccess(responseObj: MovieDetailResponseModel) {
         
         let movieDetails = responseObj.moviesDetails
         let image = responseObj.image
@@ -46,7 +48,7 @@ extension MovieDetailsPresenter {
         viewController?.displayDetailsSuccess(viewModel: viewModel)
     }
     
-    func prepareDetailsFailure(error: Error) {
+    private func prepareDetailsFailure(error: Error) {
         
         let errorCode = error.code
         var errorDesc = error.localizedDescription
@@ -61,6 +63,12 @@ extension MovieDetailsPresenter {
         
         let viewModel = MovieDetails.Get.ViewModel(movieDetails: nil, errorDescription: errorDesc)
         viewController?.displayDetailsFailure(viewModel: viewModel)
+    }
+
+    private func prepareDetailsNoInternet() {
+        
+        let viewModel = MovieDetails.Get.ViewModel(movieDetails: nil, errorDescription: nil)
+        viewController?.displayDetailsNoInternet(viewModel: viewModel)
     }
 }
 

@@ -14,6 +14,7 @@ protocol MovieDetailsDisplayLogic: class {
 
     func displayDetailsSuccess(viewModel: MovieDetails.Get.ViewModel)
     func displayDetailsFailure(viewModel: MovieDetails.Get.ViewModel)
+    func displayDetailsNoInternet(viewModel: MovieDetails.Get.ViewModel)
 }
 
 class MovieDetailsViewController: UIViewController {
@@ -77,14 +78,24 @@ class MovieDetailsViewController: UIViewController {
     
     @objc private func watchTrailerDidPress() {
         
-        // show trailer from youtube
-        let movieTitle = detailsData?.title ?? ""
-        DLog("Watch trailer for \(movieTitle)")
-        if let videoId = detailsData?.videoId {
+        // check internet connection
+        if !NetworkManager.shared.isReachable() {
             
-            DLog("Play video: \(videoId)")
+            showNoInternectConnectionAlert(specialFeature: true) { [weak self] in
+                
+                self?.watchTrailerDidPress()
+            }
+        } else {
             
-            playVideo(videoId)
+            // show trailer from youtube
+            let movieTitle = detailsData?.title ?? ""
+            DLog("Watch trailer for \(movieTitle)")
+            if let videoId = detailsData?.videoId {
+                
+                DLog("Play video: \(videoId)")
+                
+                playVideo(videoId)
+            }
         }
     }
 }
@@ -104,7 +115,7 @@ extension MovieDetailsViewController {
 
 // MARK: - Input --- Display Details
 extension MovieDetailsViewController: MovieDetailsDisplayLogic {
-    
+   
     func displayDetailsSuccess(viewModel: MovieDetails.Get.ViewModel) {
         
         //Hide spinner
@@ -135,24 +146,23 @@ extension MovieDetailsViewController: MovieDetailsDisplayLogic {
         sceneView.hideLoadingIndicator()
         
         //Show error alert
-        showError(description: viewModel.errorDescription)
+        showError(description: viewModel.errorDescription) { [weak self] in
+            
+            self?.tryGetMovieDetails()
+        }
     }
     
-    private func showError(description: String?) {
+    func displayDetailsNoInternet(viewModel: MovieDetails.Get.ViewModel) {
         
-        let errorDescription = description
+        //Hide spinner
+        sceneView.hideLoadingIndicator()
         
-        let alert = UIAlertController(title: NSLocalizedString("Oops", comment: String(describing: MovieDetailsViewController.self)),
-                                      message: errorDescription,
-                                      preferredStyle: .alert)
-        let okAction = UIAlertAction(title: NSLocalizedString("Ok", comment: String(describing: MovieDetailsViewController.self)),
-                                     style: .default,
-                                     handler: nil)
-        
-        alert.addAction(okAction)
-        present(alert, animated: true, completion: nil)
+        //Show error alert
+        showNoInternectConnectionAlert{ [weak self] in
+            
+            self?.tryGetMovieDetails()
+        }
     }
-    
 }
 
 // MARK: Routing --- Navigate next scene
@@ -160,7 +170,7 @@ extension MovieDetailsViewController {
 
     private func prepareForNextScene() {
 
-        //        router?.routeToNextScene()
+        //router?.routeToNextScene()
     }
 }
 

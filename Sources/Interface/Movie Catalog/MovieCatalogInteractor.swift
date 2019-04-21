@@ -35,6 +35,29 @@ class MovieCatalogInteractor: MovieCatalogBusinessLogic, MovieCatalogDataStore {
         movieImages = []
         movieCatalog = []
         
+        // check internet connection
+        if !NetworkManager.shared.isReachable() {
+            
+            // No internet connection
+            // Get data from DB
+            let result = MovieDataProvider.getCatalogFromDB()
+            if result == nil {
+                
+                // no data yet
+                presentNoInternetConnection()
+            } else {
+                
+                // data available to show
+            }
+        } else {
+            
+            // Get data from API
+            getCatalogFromAPI()
+        }
+    }
+    
+    private func getCatalogFromAPI() {
+        
         worker = MovieCatalogWorker()
         worker?.getCatalog(completionHandler: { [weak self] (responseResult) in
             
@@ -167,6 +190,13 @@ extension MovieCatalogInteractor {
 
 // MARK: - Present Errors
 extension MovieCatalogInteractor {
+    
+    private func presentNoInternetConnection() {
+        
+        let response: MovieCatalog.Get.Response
+        response = MovieCatalog.Get.Response.noInternet
+        presentCatalog(response: response)
+    }
     
     private func presentErrorFormat() {
         

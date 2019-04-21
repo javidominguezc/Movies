@@ -25,6 +25,8 @@ class MovieCatalogPresenter: MovieCatalogPresentationLogic {
             prepareCatalogSuccess(responseObj: responseArray)
         case .failure(let error):
             prepareCatalogFailure(error: error)
+        case .noInternet:
+            prepareCatalogNoInternet()
         }
     }
 }
@@ -32,7 +34,7 @@ class MovieCatalogPresenter: MovieCatalogPresentationLogic {
 // MARK: - Output - Display catalog
 extension MovieCatalogPresenter {
 
-    func prepareCatalogSuccess(responseObj: [MovieResponseModel]) {
+    private func prepareCatalogSuccess(responseObj: [MovieResponseModel]) {
         
         var popularMovies = [MovieModel]()
         if !responseObj.isEmpty {
@@ -49,7 +51,7 @@ extension MovieCatalogPresenter {
         viewController?.displayCatalogSuccess(viewModel: viewModel)
     }
     
-    func prepareCatalogFailure(error: Error) {
+    private func prepareCatalogFailure(error: Error) {
         
         let errorCode = error.code
         var errorDesc = error.localizedDescription
@@ -64,5 +66,11 @@ extension MovieCatalogPresenter {
         
         let viewModel = MovieCatalog.Get.ViewModel(movies: nil, errorDescription: errorDesc)
         viewController?.displayCatalogFailure(viewModel: viewModel)
+    }
+    
+    private func prepareCatalogNoInternet() {
+        
+        let viewModel = MovieCatalog.Get.ViewModel(movies: nil, errorDescription: nil)
+        viewController?.displayCatalogNoInternet(viewModel: viewModel)
     }
 }
