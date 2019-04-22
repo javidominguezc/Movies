@@ -36,6 +36,11 @@ class MovieDetailsInteractor: MovieDetailsBusinessLogic, MovieDetailsDataStore {
         
         if itemToShow != 0 {
             
+            //reset values
+            mDetails = nil
+            image = nil
+            videos = nil
+            
             let id = String(itemToShow)
             
             // check internet connection
@@ -43,15 +48,22 @@ class MovieDetailsInteractor: MovieDetailsBusinessLogic, MovieDetailsDataStore {
                 
                 // No internet connection
                 // Get data from DB
-                let result = DetailsDataProvider.getDetailsFromDB(id: id)
-                if result == nil {
+                let (movieDetail, imageDetail, videosDetail) = DetailsDataProvider.getMovieDetailsFromDB(id: itemToShow)
+                guard let movieDetailModel = movieDetail else {
                     
                     // no data yet
                     presentNoInternetConnection()
-                } else {
-                    
-                    // data available to show
+                    return
                 }
+                
+                // data available to show
+                
+                mDetails = movieDetailModel
+                image = imageDetail
+                videos = videosDetail
+                
+                // prepare to present
+                prepareToPresentDetails()
             } else {
                 
                 // Get data from API
@@ -81,7 +93,15 @@ class MovieDetailsInteractor: MovieDetailsBusinessLogic, MovieDetailsDataStore {
                     // details is not nil
                     // save details
                     self?.mDetails = details
+                    
+                    // save data to DB
+                    if let idInt = self?.itemToShow {
+                        
+                        DetailsDataProvider.saveMovieDetailsToDB(id: idInt, movieDetails: details)
+                    }
+                    
                     self?.getResources(details: details)
+                    self?.prepareToPresentDetails()
                 } else {
                     
                     // details is nil
@@ -110,22 +130,6 @@ class MovieDetailsInteractor: MovieDetailsBusinessLogic, MovieDetailsDataStore {
             let videoPath = String(id)
             getVideos(videoPath: videoPath)
         }
-
-        dispatchGroup.notify(queue: .main) { [weak self] in
-            
-            // all the resources finished its download
-            var response: MovieDetails.Get.Response
-            
-            if let movieDetails = self?.mDetails {
-                
-                let movieDetailsResponse = MovieDetailResponseModel(moviesDetails: movieDetails, image: self?.image, videos: self?.videos)
-                response = MovieDetails.Get.Response.success(details: movieDetailsResponse)
-                self?.presentDetails(response: response)
-            } else {
-                
-                self?.presentUnexpectedError()
-            }
-        }
     }
         
     private func getImage(imagePath: String) {
@@ -141,6 +145,12 @@ class MovieDetailsInteractor: MovieDetailsBusinessLogic, MovieDetailsDataStore {
                 DLog("Download Finished: \(imagePath)")
                 // save image
                 self?.image = dataResponse
+                
+                // save data to DB
+                if let idInt = self?.itemToShow, let imageData = self?.image {
+                    
+                    DetailsDataProvider.saveImageToDB(id: idInt, image: imageData)
+                }
                 break
             case .error(let error):
                 
@@ -179,6 +189,12 @@ class MovieDetailsInteractor: MovieDetailsBusinessLogic, MovieDetailsDataStore {
                     // videos is not nil
                     // save videos
                     self?.videos = videos
+                    
+                    // save data to DB
+                    if let idInt = self?.itemToShow, let videoModel = self?.videos {
+                        
+                        DetailsDataProvider.saveVideos(id: idInt, videos: videoModel)
+                    }
                 } else {
                     
                     // videos is nil
@@ -199,6 +215,25 @@ class MovieDetailsInteractor: MovieDetailsBusinessLogic, MovieDetailsDataStore {
             // leave dispatch
             self?.dispatchGroup.leave()
         })
+    }
+    
+    private func prepareToPresentDetails() {
+        
+        dispatchGroup.notify(queue: .main) { [weak self] in
+            
+            // all the resources finished its download
+            var response: MovieDetails.Get.Response
+            
+            if let movieDetails = self?.mDetails {
+                
+                let movieDetailsResponse = MovieDetailResponseModel(moviesDetails: movieDetails, image: self?.image, videos: self?.videos)
+                response = MovieDetails.Get.Response.success(details: movieDetailsResponse)
+                self?.presentDetails(response: response)
+            } else {
+                
+                self?.presentUnexpectedError()
+            }
+        }
     }
 }
     
