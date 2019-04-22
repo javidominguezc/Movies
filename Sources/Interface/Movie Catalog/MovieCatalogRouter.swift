@@ -47,9 +47,21 @@ class MovieCatalogRouter: MovieCatalogRoutingLogic, MovieCatalogDataPassing {
     // MARK: Passing data
     func passData(from source: MovieCatalogDataStore, to destination: inout MovieDetailsDataStore) {
         
-        if let index = viewController?.sceneView.tableView.indexPathForSelectedRow?.row {
+        guard let vController = viewController else {
             
-            destination.itemToShow = source.movieCatalog[index].movie.id
+            return
+        }
+        if let index = vController.sceneView.tableView.indexPathForSelectedRow?.row {
+            
+            if vController.isFiltering() {
+                
+                // movies filtered
+                destination.itemToShow = vController.filteredMovies[index].id
+            } else {
+                
+                // all movies
+                destination.itemToShow = source.movieCatalog[index].movie.id
+            }
         }
     }
 }

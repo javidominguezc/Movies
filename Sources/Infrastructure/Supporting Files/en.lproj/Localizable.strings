@@ -42,3 +42,6 @@
 
 /* Overview title - Details */
 "Overview title" = "Overview";
+
+/* Catalog search bar - placeholder */
+"Search Movies - placeholder" = "Search Movies";
