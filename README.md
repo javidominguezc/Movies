@@ -1,6 +1,6 @@
 # Movies
 
-This an App to test the movie DB API: https://www.themoviedb.org/\
+This App tests the movie DB API: https://www.themoviedb.org/\
 
 ## Getting Started
 
