@@ -16,7 +16,7 @@ carthage update --platform iOS
 
 ## Notes
 
-Search functionality is placed in the Navigation bar. Scroll down the catalog to show it
+Search functionality is placed in Navigation Bar. Scroll down the catalog to show it
 
 
 
