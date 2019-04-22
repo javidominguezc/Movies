@@ -10,9 +10,35 @@ import Foundation
 
 class MovieDataProvider {
     
-    static func getCatalogFromDB() -> String? {
+    static func getCatalogFromDB() -> ([MovieBaseModel]?, [MovieImageModel]?) {
         
-        return nil
+        var moviesModel: [MovieBaseModel]?
+        var imagesModel: [MovieImageModel]?
+        
+        if let movies = DataBaseManager.shared.loadMoviesData() {
+            
+            moviesModel = movies
+            imagesModel = []
+            for movie in movies {
+                
+                let imageData = DataBaseManager.shared.loadImageData(id: movie.id, isSmall: true)
+                let imageModel = MovieImageModel(id: movie.id, image: imageData)
+                
+                imagesModel?.append(imageModel)
+            }
+        }
+        
+        return (moviesModel, imagesModel)
+    }
+    
+    static func saveCatalogToDB(movies: [MovieBaseModel]) {
+        
+        DataBaseManager.shared.saveMoviesData(movies: movies)
+    }
+    
+    static func saveImageToDB(id: Int, image: Data, isSmall: Bool) {
+        
+        DataBaseManager.shared.saveImageData(id: id, image: image, isSmall: isSmall)
     }
 }
 

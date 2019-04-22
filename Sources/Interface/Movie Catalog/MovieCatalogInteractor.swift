@@ -40,15 +40,20 @@ class MovieCatalogInteractor: MovieCatalogBusinessLogic, MovieCatalogDataStore {
             
             // No internet connection
             // Get data from DB
-            let result = MovieDataProvider.getCatalogFromDB()
-            if result == nil {
+            let (movies, images) = MovieDataProvider.getCatalogFromDB()
+            guard let moviesModel = movies, !moviesModel.isEmpty else {
                 
                 // no data yet
                 presentNoInternetConnection()
-            } else {
-                
-                // data available to show
+                return
             }
+            
+            // data available to show
+            if let imagesModel = images {
+                
+                movieImages = imagesModel
+            }
+            prepareToPresentCatalog(catalog: moviesModel)
         } else {
             
             // Get data from API
@@ -71,7 +76,14 @@ class MovieCatalogInteractor: MovieCatalogBusinessLogic, MovieCatalogDataStore {
                 if let catalog = catalog {
                     
                     // catalog is not nil
+                    
+                    // save data to DB
+                    MovieDataProvider.saveCatalogToDB(movies: catalog)
+                    
+                    // get images
                     self?.getAllImages(catalog: catalog)
+                    
+                    // prepare to present
                     self?.prepareToPresentCatalog(catalog: catalog)
                 } else {
                     
@@ -113,6 +125,12 @@ class MovieCatalogInteractor: MovieCatalogBusinessLogic, MovieCatalogDataStore {
                     DLog("Download Finished: \(imagePath)")
                     // save image
                     image = dataResponse
+                    
+                    if let imageData = image {
+                        
+                        // save data to DB
+                        MovieDataProvider.saveImageToDB(id: movie.id, image: imageData, isSmall: true)
+                    }
                     break
                 case .error(let error):
                     
