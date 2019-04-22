@@ -129,7 +129,7 @@ class MovieCatalogInteractor: MovieCatalogBusinessLogic, MovieCatalogDataStore {
                     if let imageData = image {
                         
                         // save data to DB
-                        MovieDataProvider.saveImageToDB(id: movie.id, image: imageData, isSmall: true)
+                        MovieDataProvider.saveImageToDB(id: movie.id, image: imageData)
                     }
                     break
                 case .error(let error):

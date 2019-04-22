@@ -36,9 +36,9 @@ class MovieDataProvider {
         DataBaseManager.shared.saveMoviesData(movies: movies)
     }
     
-    static func saveImageToDB(id: Int, image: Data, isSmall: Bool) {
+    static func saveImageToDB(id: Int, image: Data) {
         
-        DataBaseManager.shared.saveImageData(id: id, image: image, isSmall: isSmall)
+        DataBaseManager.shared.saveImageData(id: id, image: image, isSmall: true)
     }
 }
 
