@@ -14,6 +14,10 @@ This project uses Carthage. Before building the App you have to update Carthage
 carthage update --platform iOS
 ```
 
+## Notes
+
+Search functionality is placed in the Navigation bar. Scroll down the catalog to show it
+
 
 
 
