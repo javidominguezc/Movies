@@ -16,14 +16,16 @@ protocol MovieCatalogDisplayLogic: class {
 }
 
 class MovieCatalogViewController: UIViewController {
-
+    
     var interactor: MovieCatalogBusinessLogic?
     var router: (MovieCatalogRoutingLogic & MovieCatalogDataPassing)?
     
+    let sceneView = MovieCatalogView()
+    var filteredMovies = [MovieModel]()
+    
     private let movieCellIdentifier = "MovieCellIdentifier"
     private var tableViewDatasource = [MovieModel]()
-    
-    let sceneView = MovieCatalogView()
+    private let searchController = UISearchController(searchResultsController: nil)
 
     // MARK: Object lifecycle
     override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
@@ -64,6 +66,19 @@ class MovieCatalogViewController: UIViewController {
         super.viewDidLoad()
         title = NSLocalizedString("Catalog - title", comment: "Catalog title")
         
+        // Setup the Search Controller
+        searchController.searchResultsUpdater = self
+        searchController.obscuresBackgroundDuringPresentation = false
+        searchController.searchBar.placeholder = NSLocalizedString("Search Movies - placeholder", comment: "Catalog search")
+        if #available(iOS 11.0, *) {
+            
+            navigationItem.searchController = searchController
+        } else {
+            sceneView.tableView.tableHeaderView = searchController.searchBar
+        }
+        
+        definesPresentationContext = true
+        
         sceneView.tableView.dataSource = self
         sceneView.tableView.delegate = self
         sceneView.tableView.register(MovieCatalogTableViewCell.self, forCellReuseIdentifier: movieCellIdentifier)
@@ -87,9 +102,16 @@ extension MovieCatalogViewController: UITableViewDataSource, UITableViewDelegate
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
-        return tableViewDatasource.count
+        if isFiltering() {
+            
+            // movies filtered
+            return filteredMovies.count
+        } else {
+            
+            // all movies
+            return tableViewDatasource.count
+        }
     }
-    
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
@@ -109,7 +131,16 @@ extension MovieCatalogViewController: UITableViewDataSource, UITableViewDelegate
         
         cell.selectionStyle = .none
         
-        let movie = tableViewDatasource[indexPath.row]
+        var movie: MovieModel
+        if isFiltering() {
+            
+            // filtered movies
+            movie = filteredMovies[indexPath.row]
+        } else {
+            
+            // all movies
+            movie = tableViewDatasource[indexPath.row]
+        }
         
         // title
         cell.titleLabel.text = movie.title
@@ -202,5 +233,40 @@ extension MovieCatalogViewController {
     private func prepareForMovieDetailScene() {
 
         router?.routeToDetail()
+    }
+}
+
+// MARK: - Search
+extension MovieCatalogViewController {
+    
+    private func searchBarIsEmpty() -> Bool {
+        
+        // Returns true if the text is empty or nil
+        return searchController.searchBar.text?.isEmpty ?? true
+    }
+    
+    private func filterContentForSearchText(_ searchText: String, scope: String = "All") {
+        
+        filteredMovies = tableViewDatasource.filter({ (movie: MovieModel) -> Bool in
+            
+            return movie.title?.lowercased().contains(searchText.lowercased()) ?? false
+        })
+        
+        sceneView.tableView.reloadData()
+    }
+}
+
+// MARK: - Search Delegate
+extension MovieCatalogViewController: UISearchResultsUpdating {
+    
+    func updateSearchResults(for searchController: UISearchController) {
+        
+        filterContentForSearchText(searchController.searchBar.text!)
+    }
+    
+    // determine if filtering is in use
+    func isFiltering() -> Bool {
+        
+        return searchController.isActive && !searchBarIsEmpty()
     }
 }
